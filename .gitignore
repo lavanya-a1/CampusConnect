@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual envs
+venv/
+.venv/
+env/
+*/venv/
+*/.venv/
+
+# Django
+db.sqlite3
+media/
+local_settings.py
+
+# Secrets
+.env
+.env.*
+
+# Static collect output (keep your source static/ if you version it)
+staticfiles/
+static_root/
+
+# IDE/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

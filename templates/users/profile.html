@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-4">
+          <h2 class="text-center mb-4">Your Profile</h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Full Name:</strong> {{ user.full_name }}</li>
+            <li class="list-group-item"><strong>College ID:</strong> {{ user.college_id }}</li>
+            <li class="list-group-item"><strong>College Email:</strong> {{ user.email }}</li>
+            <li class="list-group-item"><strong>Department:</strong> {{ user.department }}</li>
+            <li class="list-group-item"><strong>Section:</strong> {{ user.section }}</li>
+            <li class="list-group-item"><strong>Phone Number:</strong> {{ user.phone_number }}</li>
+            <li class="list-group-item"><strong>Residence:</strong> {{ user.dayscholar|yesno:"Day Scholar,Hosteller" }}</li>
+          </ul>
+          <div class="mt-4 text-center">
+            <a href="{% url 'users:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

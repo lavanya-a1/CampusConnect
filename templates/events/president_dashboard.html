@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>President Dashboard</h2>
+
+{% if clubs_with_events %}
+  {% for item in clubs_with_events %}
+    <div class="mb-4">
+      <h3>{{ item.club.name }}</h3>
+      <p>
+        <a href="{% url 'events:create' %}" class="btn btn-sm btn-primary">Add Event</a>
+      </p>
+      <h4>Upcoming Events</h4>
+      <ul class="list-group mb-3">
+        {% for ev in item.upcoming_events %}
+          <li class="list-group-item">
+            <a href="{% url 'events:detail' ev.pk %}"><strong>{{ ev.title }}</strong></a>
+            <div>{{ ev.date|date:"M d, Y H:i" }} at {{ ev.venue }}</div>
+          </li>
+        {% empty %}
+          <li class="list-group-item">No upcoming events.</li>
+        {% endfor %}
+      </ul>
+
+      <h4>Completed Events</h4>
+      <ul class="list-group">
+        {% for ev in item.completed_events %}
+          <li class="list-group-item">
+            <a href="{% url 'events:detail' ev.pk %}"><strong>{{ ev.title }}</strong></a>
+            <div>{{ ev.date|date:"M d, Y H:i" }} at {{ ev.venue }}</div>
+            <a href="{% url 'events:upload_gallery' ev.id %}" class="btn btn-sm btn-info mt-2">Upload Photos</a>
+          </li>
+        {% empty %}
+          <li class="list-group-item">No completed events.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>You are not marked as a lead in any club. Contact admin to be assigned.</p>
+{% endif %}
+{% endblock %}
+
+

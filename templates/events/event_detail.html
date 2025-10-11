@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ event.title }}</h2>
+<p><strong>Date:</strong> {{ event.date|date:"M d, Y H:i" }}</p>
+<p><strong>Venue:</strong> {{ event.venue }}</p>
+<p>{{ event.description }}</p>
+
+{% if user.is_authenticated %}
+  {% if not event.completed %}
+    <a href="{% url 'events:register' event.id %}" class="btn btn-success">Register</a>
+  {% endif %}
+  {% if event.completed %}
+    <a href="{% url 'events:upload_gallery' event.id %}" class="btn btn-info">Upload Photo</a>
+  {% endif %}
+{% else %}
+  <p><a href="{% url 'login' %}">Login</a> to register or upload photos.</p>
+{% endif %}
+
+<hr>
+<h3>Gallery</h3>
+<div class="row">
+  {% for image in event.gallery.all %}
+    <div class="col-md-3">
+      <img src="{{ image.image.url }}" class="img-fluid rounded mb-3">
+    </div>
+  {% empty %}
+    <p>No images yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

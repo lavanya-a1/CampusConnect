@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Upcoming Events</h2>
+<p>
+  {% if user.is_authenticated %}
+    <a href="{% url 'events:president_dashboard' %}" class="btn btn-secondary">President Dashboard</a>
+  {% endif %}
+</p>
+<ul class="list-group">
+  {% for event in upcoming_events %}
+    <li class="list-group-item">
+      <a href="{% url 'events:detail' event.pk %}">
+        <strong>{{ event.title }}</strong>
+      </a>
+      <br>
+      {{ event.date|date:"M d, Y H:i" }} at {{ event.venue }}
+    </li>
+  {% empty %}
+    <li class="list-group-item">No upcoming events.</li>
+  {% endfor %}
+</ul>
+
+<hr>
+<h2>Completed Events</h2>
+<ul class="list-group">
+  {% for event in completed_events %}
+    <li class="list-group-item">
+      <a href="{% url 'events:detail' event.pk %}"><strong>{{ event.title }}</strong></a>
+      <br>
+      {{ event.date|date:"M d, Y H:i" }} at {{ event.venue }}
+    </li>
+  {% empty %}
+    <li class="list-group-item">No completed events.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

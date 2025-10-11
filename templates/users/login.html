@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-4">
+          <h2 class="text-center mb-4">Login</h2>
+
+          <form method="post">
+            {% csrf_token %}
+
+            <!-- Non-field errors -->
+            {{ form.non_field_errors }}
+
+            <!-- Username / Email -->
+            <div class="mb-3">
+              <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+              {{ form.username }}
+              {{ form.username.errors }}
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+              {{ form.password }}
+              {{ form.password.errors }}
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+          </form>
+
+          <p class="text-center mt-3">
+            Don't have an account? <a href="{% url 'users:signup' %}">Sign up here</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Register for {{ event.title }}</h2>
+  {% if registered %}
+    <div class="alert alert-success" role="alert">
+      You have successfully registered for this event!
+    </div>
+  {% else %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success">Register</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

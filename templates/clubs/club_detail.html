@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ club.name }}</h2>
+
+{% if club.logo %}
+  <img src="{{ club.logo.url }}" alt="{{ club.name }}" class="club-logo">
+{% endif %}
+<p>{{ club.description }}</p>
+<h4>Faculty Coordinator</h4>
+
+<p>
+  {{ club.faculty_coordinator }}
+  {% if club.faculty_coordinator_number %}- {{ club.faculty_coordinator_number }}{% endif %}
+</p>
+
+<h4>President</h4>
+<p>
+  {{ club.president_name }}
+  {% if club.president_contact %}- {{ club.president_contact }}{% endif %}
+</p>
+
+<h4>Vice President</h4>
+<p>{{ club.vice_president_name }}</p>
+
+<h4>Treasurer</h4>
+<p>{{ club.treasurer_name }}</p>
+
+<h4>Secretary</h4>
+<p>{{ club.secretary_name }}</p>
+
+
+<h3>Members</h3>
+<ul>
+  {% for member in club.members.all %}
+    {% if member.role == 'member' %}
+      <li>{{ member.user.full_name|default:member.user.get_full_name|default:"Member" }}</li>
+    {% endif %}
+  {% empty %}
+    <li>No members yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+

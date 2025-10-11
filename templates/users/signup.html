@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-4">
+          <h2 class="text-center mb-4">Create an Account</h2>
+          
+          <form method="post">
+            {% csrf_token %}
+
+            <!-- Non-field errors -->
+            {{ form.non_field_errors }}
+
+            <!-- Full Name -->
+            <div class="mb-3">
+              {{ form.full_name.label_tag }}
+              {{ form.full_name }}
+              {{ form.full_name.errors }}
+            </div>
+
+            <!-- College ID -->
+            <div class="mb-3">
+              {{ form.college_id.label_tag }}
+              {{ form.college_id }}
+              {{ form.college_id.errors }}
+            </div>
+
+            <!-- Email (used as username) -->
+            <div class="mb-3">
+              {{ form.email.label_tag }}
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+
+            <!-- Passwords -->
+            <div class="mb-3">
+              {{ form.password1.label_tag }}
+              {{ form.password1 }}
+              {{ form.password1.errors }}
+            </div>
+            <div class="mb-3">
+              {{ form.password2.label_tag }}
+              {{ form.password2 }}
+              {{ form.password2.errors }}
+            </div>
+
+            <!-- Department -->
+            <div class="mb-3">
+              {{ form.department.label_tag }}
+              {{ form.department }}
+              {{ form.department.errors }}
+            </div>
+
+            <!-- Section -->
+            <div class="mb-3">
+              {{ form.section.label_tag }}
+              {{ form.section }}
+              {{ form.section.errors }}
+            </div>
+
+            <!-- Phone Number -->
+            <div class="mb-3">
+              {{ form.phone_number.label_tag }}
+              {{ form.phone_number }}
+              {{ form.phone_number.errors }}
+            </div>
+
+            <!-- Residency / Day Scholar -->
+            <div class="mb-3">
+              {{ form.dayscholar.label_tag }}
+              {{ form.dayscholar }}
+              {{ form.dayscholar.errors }}
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Sign Up</button>
+          </form>
+
+          <p class="text-center mt-3">
+            Already have an account? <a href="{% url 'users:login' %}">Login here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

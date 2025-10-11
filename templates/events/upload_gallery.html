@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Upload Image for {{ event.title }}</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="image" class="form-control mb-2" required>
+  <button type="submit" class="btn btn-info">Upload</button>
+</form>
+{% endblock %}

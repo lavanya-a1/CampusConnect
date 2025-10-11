@@ -1,0 +1,66 @@
+/* General styles */
+body {
+  background-color: #f8f9fa; /* light gray background */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(90deg, #0062cc, #4e73df);
+}
+.navbar .navbar-brand {
+  color: #fff !important;
+  font-weight: bold;
+}
+.navbar .btn-link {
+  color: #f8f9fa !important;
+}
+.navbar .btn-primary,
+.navbar .btn-success,
+.navbar .btn-outline-danger {
+  margin-left: 5px;
+}
+
+/* Footer */
+footer {
+  background-color: #f1f1f1;
+  color: #555;
+  font-size: 14px;
+}
+
+/* Cards for clubs */
+.card {
+  border-radius: 12px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Event list items */
+.list-group-item {
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background-color: #fff;
+  transition: background 0.2s ease;
+}
+.list-group-item:hover {
+  background-color: #e9ecef;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-weight: 500;
+}
+.club-logo {
+  width: 250px;          /* fixed width */
+  height: 250px;         /* fixed height — square shape */
+  object-fit: cover;    /* crop to fill the square without stretching */
+  display: inline-block;/* ensures proper layout */
+  border: 1px solid black;/* black outline */
+}
+
+
